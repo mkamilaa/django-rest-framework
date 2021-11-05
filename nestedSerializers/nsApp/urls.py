@@ -1,4 +1,4 @@
-"""cbvCourse URL Configuration
+"""nestedSerializers URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -14,21 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
-from cbvCourseApp import views
-
-router = DefaultRouter()
-router.register('courses',views.CourseViewSet)
+from django.urls import path, include
+from nsApp import views
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('author/', views.AuthorListView.as_view()),
+    path('author/<int:pk>', views.AuthorDetailView.as_view()),
+    path('book/', views.BookListView.as_view()),
+    path('book/<int:pk>', views.BookDetailView.as_view()),
 ]
-
-
-'''
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('courses/',views.CourseList.as_view()),
-    path('courses/<int:pk>',views.CourseDetail.as_view())
-]
-'''

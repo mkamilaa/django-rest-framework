@@ -1,4 +1,4 @@
-"""cbvCourse URL Configuration
+"""nsCustomer URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -15,20 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from cbvCourseApp import views
+from nsCustomerApp import views
+from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register('courses',views.CourseViewSet)
+router.register('customers',views.CustomerViewSet)
+router.register('orders',views.OrderViewSet)
 
 urlpatterns = [
     path('', include(router.urls))
 ]
-
-
-'''
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('courses/',views.CourseList.as_view()),
-    path('courses/<int:pk>',views.CourseDetail.as_view())
-]
-'''
